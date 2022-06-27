@@ -1,0 +1,86 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<h1>Register</h1>
+
+	{{ form_start(registrationForm) }}
+	{{ form_row(registrationForm.email) }}
+	{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+	{{ form_row(registrationForm.agreeTerms) }}
+
+	<button type="submit" class="btn">Register</button>
+	{{ form_end(registrationForm) }}
+
+	<a href="/">Homepage</a>
+	<a href="/login">Login</a>
+    
+{% endblock %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}My Quizz - Sign up
+{% endblock %}
+
+{% block body %}
+	<div class="box">
+		<div class="square" style="--i:0;"></div>
+		<div class="square" style="--i:1;"></div>
+		<div class="square" style="--i:2;"></div>
+		<div class="square" style="--i:3;"></div>
+		<div class="square" style="--i:4;"></div>
+		<div class="container">
+			<div class="form">
+				
+				<h2>Sign Up</h2>
+				{{ form_start(registrationForm) }}
+				<div class="inputBox">
+					{{ form_row(registrationForm.email, {'attr': {'placeholder': 'Email address'}}) }}
+					<i class="ri-mail-line mail-icon"></i>
+				</div>
+				<div class="inputBox">
+					{{ form_row(registrationForm.plainPassword, {'attr': {'placeholder': 'Password'}}) }}
+					<i class="ri-lock-2-line pwd-icon"></i>
+				</div>
+				<div class="agreeTerms">
+					{{ form_row(registrationForm.agreeTerms) }}
+				</div>
+				<div class="inputBox">
+					<input type="submit" class="btn" value="Register">
+				</div>
+				<p class="no-account">Already have an account ?
+					<a href="{{ path('app_login') }}">Log In</a>
+				</p>
+				{# {% for flash_error in app.flashes('verify_email_error') %}
+					<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+				{% endfor %} #}
+				{{ form_end(registrationForm) }}
+				{# <form action="">
+				                    <div class="inputBox">
+				                        <input type="email" name="" id="" placeholder="Email address">
+				                        <i class="ri-mail-line mail-icon"></i>
+				                    </div>
+				                    <div class="inputBox">
+				                        <input type="password" name="" id="" placeholder="Password">
+				                        <i class="ri-lock-2-line pwd-sign-icon"></i>
+				                    </div>
+				                    <div class="inputBox">
+				                        <input type="password" name="" id="" placeholder="Confirm Password">
+				                        <i class="ri-lock-2-line pwd-confirm-icon"></i>
+				                    </div>
+				                    <div class="inputBox">
+				                        <input type="submit" name="" id="" value="Sign up">
+				                    </div>
+				                </form> #}
+			</div>
+		</div>
+	</div>
+{% endblock %}

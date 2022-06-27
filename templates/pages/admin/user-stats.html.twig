@@ -1,0 +1,30 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content_title %}Statistics
+{% endblock %}
+{% block page_actions %}
+	<a class="btn btn-primary" href="...">Some Action</a>
+{% endblock %}
+
+{% block main %}
+	<table class="datagrid">
+		<thead>
+			<tr>
+				<td>Unique visitor</td>
+			</tr>
+		</thead>
+		<tbody>
+        {# <pre>
+            {{ dump(data.Unique_visit) }}
+        </pre> #}
+			<tr>
+				<td>{{ data.Unique_visit }}</td>
+			</tr>
+			{# {% for log in data %}
+				<tr>
+					<td>{{ log.Uniquevisit }}</td>
+				</tr>
+			{% endfor %} #}
+		</tbody>
+	</table>
+{% endblock %}

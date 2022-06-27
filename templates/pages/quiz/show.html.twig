@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QuizPlay!
+{% endblock %}
+
+{% block body %}
+	<div class="question-container">					
+		<h2>{{ categories.name|e }}</h2>
+		<form action="/quiz/{{ categories.id }}/score" method="post" class="scroll">
+				<ul class="question-content">
+					{% for question in questions %}
+						<div class="question-card">
+							<li class="question-title">{{ question.question }}</li>
+							{% for reponse in reponses %}
+								{% if reponse.question.id == question.id %}
+									<label class="reponses" for='{{ reponse.id }}'>
+										<input type="radio" id='{{ reponse.id }}' name='{{ reponse.question.id }}' value='{{ reponse.id }}' required>
+										{{ reponse.reponse }}
+									</label>
+								{% endif %}
+							{% endfor %}
+						</div>
+					{% endfor %}
+				</ul>
+			<input type="submit" class="btn reponse-btn" value="Submit">
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+<nav class="navbar">
+	<a class="navbar-brand" href="{{ path('app_index') }}">My Quizz</a>
+	<div class="navbar-links">
+		{# <ul class="navbar-links-list">
+			<input type="text" class="nav-search" placeholder="Search...">
+		</ul> #}
+	</div>
+	<div class="navbar-buttons">
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<div class="nav-buttons">
+				<a href="/user/{{ app.user.id }}" class="btn-content">
+					<button class="nav-btn login" type="button">
+						Profile
+						<i class="ri-user-line"></i>
+					</button>
+				</a>
+			</div>
+			<div class="nav-buttons">
+				<a href="{{ path('app_logout') }}" class="btn-content">
+					<button class="nav-btn login" type="button">
+						Logout
+						<i class="logout-icon ri-shut-down-line"></i>
+					</button>
+				</a>
+			</div>
+		{% else %}
+			<div class="nav-buttons">
+				<a href="{{ path('app_login') }}" class="btn-content">
+					<button class="nav-btn login" type="button">
+						Login
+						<i class="ri-login-circle-line"></i>
+					</button>
+				</a>
+			</div>
+			<div class="nav-buttons">
+				<a href="{{ path('app_register') }}" class="btn-content">
+					<button class="nav-btn signup" type="button">
+						Signup
+					</button>
+				</a>
+			</div>
+		{% endif %}
+		{% if is_granted('ROLE_ADMIN') %}
+			<div class="nav-buttons">
+				<a href="{{ path("admin")}}">
+					<button class="nav-btn login" type="button">
+						Admin
+						<i class="ri-user-line"></i>
+					</button>
+				</a>
+			</div>
+		{% endif %}
+
+	</div>
+</nav>

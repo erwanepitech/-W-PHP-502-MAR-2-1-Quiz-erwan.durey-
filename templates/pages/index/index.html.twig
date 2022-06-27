@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My Quizz{% endblock %}
+
+{% block body %}
+    <div class="main">
+        {% if not categories is same as([]) %}
+            <div class="main-sidebar">
+                <div class="sidebar-content">
+                    <h2 class="title">Quizz</h2>
+                    <ul class="list-categories">
+                        <li class="categories"></li>
+                    {% for categorie in categories %}
+                        <li class="categories">
+                            <a href="/quiz/{{ categorie.id }}"> {{ categorie.name }} </a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class= "main-quizz">
+                <h2 class="title">Random Quizz</h2>
+                <div class="main-quizz__content">
+                {% for categorie in categories %}
+                    <div class="quizz-card">
+                        <span class="quizz-image">
+                            <a href="/quiz/{{ categorie.id }}">
+                                <figure>
+                                    <img src="{{ asset('/img/quiztime.png') }}" alt="Quiz Image">
+                                    <figcaption>{{ categorie.name }}</figcaption>
+                                </figure>
+                                <h4>{{ categorie.name }}</h4>
+                            </a>
+                        </span>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="pagination">
+                    {{ knp_pagination_render(categories) }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+{% endblock %}

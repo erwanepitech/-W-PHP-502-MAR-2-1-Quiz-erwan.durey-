@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile
+{% endblock %}
+
+{% block body %}
+	<div class="historical">
+		<h2 class="title">Your game historical</h2>
+		<div class="historical-card">
+			{% for result in results %}
+				<div class="question-card">
+					{{ result.categoriename }}
+					<br>
+					Note :
+					{{ result.score }}
+					<br>
+					{{ result.date |format_datetime(locale='fr') }}
+					<br>
+				</div>
+			{% endfor %}
+		</div>
+        <div class="pagination">
+				{{ knp_pagination_render(results) }}
+			</div>
+	</div>
+{% endblock %}

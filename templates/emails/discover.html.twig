@@ -1,0 +1,18 @@
+{% apply inline_css %}
+    <style>
+        {# here, define your CSS styles as usual #}
+        h1 {
+            color: #333;
+        }
+    </style>
+
+    <h1>Welcome !</h1>
+    <p> </p>
+    <p><code>{{ email.to[0].address }}</code></p>
+
+    <p>
+        {# <p>Discover our new quiz !</p> #}
+        <a href="{{ 'https://127.0.0.1:8000/' }}">Discover our new quiz !</a>
+        {# <a href="{{ signedUrl }}">Confirm my Email</a> #}
+    </p>
+{% endapply %}
